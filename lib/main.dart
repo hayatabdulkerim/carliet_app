@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import './features/home/presentation/home_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,7 +13,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'CarLi_Et',
-      home: const HomeScreen(),
+      home: const Home(),
     );
   }
 }
