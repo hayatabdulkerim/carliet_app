@@ -1,3 +1,4 @@
+import 'package:carliet_app/shared/text/split_action_text.dart';
 import 'package:flutter/material.dart';
 import '../../../shared/input/input_field.dart';
 import '../../../shared/buttons/filled_btn.dart';
@@ -43,7 +44,10 @@ class StudentSignin extends StatelessWidget {
             SizedBox(height: 10),
             OutlinedBtn(text: 'Go Back', onPressed: _onGoBackPressed),
             SizedBox(height: 30),
-            CreatAccountText(),
+            SplitActionText(
+              text: "If you don't have an account ",
+              actionText: "Create Account",
+            ),
           ],
         ),
       ),
@@ -66,26 +70,3 @@ class Header extends StatelessWidget {
 
 //______________________________________________________________
 
-class CreatAccountText extends StatelessWidget {
-  const CreatAccountText({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return RichText(
-      textAlign: TextAlign.center,
-      text: const TextSpan(
-        style: TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
-        children: [
-          TextSpan(
-            text: 'If you don\'t have an account ',
-            style: TextStyle(color: Color.fromARGB(255, 0, 0, 0)),
-          ),
-          TextSpan(
-            text: 'Create Account',
-            style: TextStyle(color: Color(0xFF087E8B)),
-          ),
-        ],
-      ),
-    );
-  }
-}

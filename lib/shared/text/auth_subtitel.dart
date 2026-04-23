@@ -4,11 +4,7 @@ class AuthSubtitle extends StatelessWidget {
   final String text;
   final double fontSize;
 
-  const AuthSubtitle({
-    super.key,
-    required this.text,
-    this.fontSize = 28,
-  });
+  const AuthSubtitle({super.key, required this.text, this.fontSize = 26});
 
   @override
   Widget build(BuildContext context) {
