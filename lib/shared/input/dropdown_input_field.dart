@@ -1,21 +1,33 @@
 import 'package:flutter/material.dart';
 
-class InputField extends StatelessWidget {
+class DropdownField extends StatelessWidget {
   final String label;
   final String hintText;
+  final List<String> items;
+  final String? selectedValue;
+  final ValueChanged<String?> onChanged;
   final double width;
 
-  const InputField({super.key, required this.label, required this.hintText, this.width = 0.85});
+  const DropdownField({
+    super.key,
+    required this.label,
+    required this.hintText,
+    required this.items,
+    required this.selectedValue,
+    required this.onChanged,
+    this.width = 0.85,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Align(
+      alignment: Alignment.centerLeft,
       child: SizedBox(
         width: MediaQuery.of(context).size.width * width,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // LABEL ABOVE INPUT
+            // LABEL
             Text(
               label,
               style: const TextStyle(
@@ -27,8 +39,14 @@ class InputField extends StatelessWidget {
 
             const SizedBox(height: 6),
 
-            // TEXT FIELD
-            TextField(
+            // DROPDOWN
+            DropdownButtonFormField<String>(
+              value: selectedValue,
+              items: items.map((item) {
+                return DropdownMenuItem(value: item, child: Text(item));
+              }).toList(),
+              onChanged: onChanged,
+
               decoration: InputDecoration(
                 hintText: hintText,
                 hintStyle: TextStyle(color: Colors.grey.shade500),
@@ -38,19 +56,16 @@ class InputField extends StatelessWidget {
                   vertical: 14,
                 ),
 
-                // default border
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(12),
                   borderSide: BorderSide(color: Colors.grey.shade300),
                 ),
 
-                // when active
                 enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(12),
                   borderSide: BorderSide(color: Colors.grey.shade300),
                 ),
 
-                // when focused on
                 focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(12),
                   borderSide: const BorderSide(
