@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import '../../../shared/input/input_field.dart';
 import '../../../shared/buttons/filled_btn.dart';
 import '../../../shared/buttons/outlined_btn.dart';
+import '../../../shared/logo/carliet_logo.dart';
+import '../../../shared/text/app_title.dart';
+import '../../../shared/text/auth_subtitel.dart';
+import '../../../shared/text/action_text.dart';
 
 class StudentSignin extends StatelessWidget {
   const StudentSignin({super.key});
@@ -24,7 +28,7 @@ class StudentSignin extends StatelessWidget {
             SizedBox(height: screenHeight * 0.09),
             Header(),
             SizedBox(height: screenHeight * 0.04),
-            SigninText(),
+            AuthSubtitle(text: 'Sign into your account'),
             SizedBox(height: screenHeight * 0.03),
             InputField(
               label: 'Email/username',
@@ -33,7 +37,7 @@ class StudentSignin extends StatelessWidget {
             SizedBox(height: 15),
             InputField(label: 'Password', hintText: 'Enter password'),
             SizedBox(height: 10),
-            ForgotText(),
+            ActionText(text: 'Forgot password?'),
             SizedBox(height: 40),
             FilledBtn(text: 'Login', onPressed: _onLoginPressed),
             SizedBox(height: 10),
@@ -55,103 +59,12 @@ class Header extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Center(
-      child: Column(children: [Logo(), SizedBox(height: 1), AppTitle()]),
+      child: Column(children: [Logo(), SizedBox(height: 1), AppTitle(fontSize: 22, textAlign: TextAlign.center )]),
     );
   }
 }
 
-//_____________________________________________________________________________
-
-class Logo extends StatelessWidget {
-  const Logo({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Image.asset(
-      'assets/images/logo.png',
-      height: 100,
-      color: Color(0xFF087E8B),
-    );
-  }
-}
-
-//_____________________________________________________________________________
-
-class AppTitle extends StatelessWidget {
-  const AppTitle({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return RichText(
-      // use RichText instead of normal Text for a text where its different parts have different styles like different colors as in this case
-      textAlign: TextAlign.center,
-      text: const TextSpan(
-        style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
-        children: [
-          TextSpan(
-            text: 'CarLi_Et ',
-            style: TextStyle(
-              color: Color.fromARGB(255, 186, 178, 178), // grey
-            ),
-          ),
-          TextSpan(
-            text: 'Internship \nManagment',
-            style: TextStyle(
-              color: Color.fromARGB(255, 50, 50, 50), // black
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-//_____________________________________________________________
-
-class SigninText extends StatelessWidget {
-  const SigninText({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Text(
-      'Sign into your account',
-      textAlign: TextAlign.center,
-      style: TextStyle(
-        fontSize: 28,
-        fontWeight: FontWeight.bold,
-        color: Color(0xFF087E8B),
-      ),
-    );
-  }
-}
-
-//___________________________________________________________________
-
-class ForgotText extends StatelessWidget {
-  const ForgotText({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: double
-          .infinity, //Make this widget stretch as wide as possible inside its parent
-      padding: const EdgeInsets.only(
-        right: 16,
-      ), // add padding on the right so that the text does not stick to the edge of the screen
-      child: Text(
-        'Forgot password?',
-        textAlign: TextAlign.end,
-        style: TextStyle(
-          fontSize: 14,
-          fontWeight: FontWeight.w400,
-          color: Color(0xFF087E8B),
-        ),
-      ),
-    );
-  }
-}
-
-//_______________________________________________________________
+//______________________________________________________________
 
 class CreatAccountText extends StatelessWidget {
   const CreatAccountText({super.key});
