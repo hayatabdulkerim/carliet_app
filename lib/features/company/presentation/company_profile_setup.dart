@@ -27,13 +27,13 @@ class _CompanyProfileSetupState extends State<CompanyProfileSetup> {
     return Scaffold(
       body: Column(
         children: [
-          const SizedBox(height: 55),
+          const SizedBox(height: 75),
           const Header(),
-          SizedBox(height: screenHeight * 0.03),
+          SizedBox(height: screenHeight * 0.07),
 
           const AuthSubtitle(text: 'Complete your profile', fontSize: 24),
 
-          SizedBox(height: screenHeight * 0.007),
+          SizedBox(height: screenHeight * 0.03),
 
           FirstInputs(
             selectedIndustry: selectedIndustry,
@@ -44,7 +44,7 @@ class _CompanyProfileSetupState extends State<CompanyProfileSetup> {
             },
           ),
 
-          SizedBox(height: screenHeight * 0.007),
+          SizedBox(height: screenHeight * 0.03),
 
           const InputField(label: 'Location', hintText: 'Location'),
 
@@ -55,7 +55,7 @@ class _CompanyProfileSetupState extends State<CompanyProfileSetup> {
             hintText: 'Enter company description',
           ),
 
-          const SizedBox(height: 15),
+          const SizedBox(height: 25),
 
           FilledBtn(text: 'Finish  >', onPressed: _onFinishPressed),
         ],
@@ -104,6 +104,8 @@ class FirstInputs extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
+        const CompanyLogoField(),
+        const SizedBox(width: 16),
         Column(
           children: [
             const InputField(
@@ -118,7 +120,7 @@ class FirstInputs extends StatelessWidget {
               label: "Industry",
               hintText: "Select industry",
               items: const [
-                "Information Technology (IT)",
+                "IT",
                 "Healthcare",
                 "Finance",
                 "Education",
@@ -131,6 +133,55 @@ class FirstInputs extends StatelessWidget {
           ],
         ),
       ],
+    );
+  }
+}
+
+//___________________________________________________
+class CompanyLogoField extends StatelessWidget {
+  final VoidCallback? onTap;
+
+  const CompanyLogoField({super.key, this.onTap});
+
+  // 👇 fixed values
+  static const double leftMargin = 30;
+  static const double rightMargin = 40;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: const EdgeInsets.only(left: leftMargin, right: rightMargin),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const Text(
+            "Company Logo",
+            style: TextStyle(fontWeight: FontWeight.w600, fontSize: 14),
+          ),
+          const SizedBox(height: 8),
+
+          GestureDetector(
+            onTap: onTap,
+            child: Container(
+              height: 150,
+              width: 120,
+              decoration: BoxDecoration(
+                color: Colors.grey.shade300,
+                borderRadius: BorderRadius.circular(16),
+                border: Border.all(color: Colors.grey.shade400),
+              ),
+              child: const Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(Icons.add_a_photo_outlined, size: 28),
+                  SizedBox(height: 6),
+                  Text("Upload", style: TextStyle(fontSize: 12)),
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
